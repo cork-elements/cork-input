@@ -1,0 +1,50 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="cork-input">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      input {
+        display: block;
+        border-width: var(--cork-border-width, 2px);
+        border-color: var(--background-color-medium, #888);
+        border-style: solid;
+      }
+    </style>
+    
+    <input id="input" type="[[type]]" placeholder="[[placeholder]]" />
+  </template>
+
+  <script>
+
+    class CorkInput extends Polymer.Element {
+      static get is() { return 'cork-input'; }
+
+      static get properties() {
+        return {
+          type: {
+            type: String,
+            value: 'text'
+          },
+          placeholder: {
+            type: String,
+            value : ''
+          }
+        };
+      }
+
+      get value() {
+        return this.$.input.value;
+      }
+
+      set value(value) {
+        this.$.input.value = value;
+      }
+    }
+
+    window.customElements.define(CorkInput.is, CorkInput);
+  </script>
+</dom-module>
