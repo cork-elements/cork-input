@@ -18,7 +18,7 @@
       }
     </style>
     
-    <input id="input" type="[[type]]" placeholder="[[placeholder]]" />
+    <input id="input" type="[[type]]" placeholder="[[placeholder]]" on-change="_customChangeEvent" />
   </template>
 
   <script>
@@ -37,6 +37,18 @@
             value : ''
           }
         };
+      }
+
+      _customChangeEvent() {
+        var payload = {
+          bubbles: true, 
+          composed: true,
+          details : {
+            value : this.$.input.value
+          }
+        }
+
+        this.dispatchEvent(new CustomEvent('change', payload));
       }
 
       get value() {
