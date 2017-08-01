@@ -28,6 +28,12 @@
 
       static get properties() {
         return {
+          value: {
+            type : String,
+            value : '',
+            notify : true,
+            observer : '_onValueChange'
+          },
           type: {
             type: String,
             value: 'text'
@@ -40,6 +46,8 @@
       }
 
       _customChangeEvent() {
+        this.value = this.$.input.value;
+        
         var payload = {
           bubbles: true, 
           composed: true,
@@ -51,12 +59,10 @@
         this.dispatchEvent(new CustomEvent('change', payload));
       }
 
-      get value() {
-        return (this.$ && this.$.input) ? this.$.input.value : '';
-      }
-
-      set value(value) {
-        this.$.input.value = value;
+      _onValueChange() {
+        if( this.$ && this.$.input && this.$.input.value !== this.value ) {
+          this.$.input.value = this.value;
+        }
       }
     }
 
