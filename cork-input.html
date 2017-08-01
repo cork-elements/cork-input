@@ -18,7 +18,7 @@
       }
     </style>
     
-    <input id="input" type="[[type]]" placeholder="[[placeholder]]" on-change="_customChangeEvent" />
+    <input id="input" type="[[type]]" placeholder="[[placeholder]]" on-keyup="_onKeyUp" on-change="_customChangeEvent" />
   </template>
 
   <script>
@@ -57,6 +57,12 @@
         }
 
         this.dispatchEvent(new CustomEvent('change', payload));
+      }
+
+      _onKeyUp() {
+        if( this.$ && this.$.input && this.$.input.value !== this.value ) {
+          this.value = this.$.input.value;
+        }
       }
 
       _onValueChange() {
