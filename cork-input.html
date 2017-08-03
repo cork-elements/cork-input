@@ -18,7 +18,13 @@
       }
     </style>
     
-    <input id="input" type="[[type]]" placeholder="[[placeholder]]" on-keyup="_onKeyUp" on-change="_customChangeEvent" />
+    <input 
+      id="input" 
+      type="[[type]]" 
+      placeholder="[[placeholder]]" 
+      autocomplete="off"
+      on-keyup="_onKeyUp" 
+      on-change="_customChangeEvent" />
   </template>
 
   <script>
