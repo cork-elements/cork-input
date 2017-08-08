@@ -3,7 +3,8 @@
   "description": "Input element with cork styling",
   "main": "cork-input.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "cork-style": "cork-elements/cork-style"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
