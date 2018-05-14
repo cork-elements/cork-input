@@ -1,0 +1,27 @@
+{
+  "name": "@ucd-lib/cork-input",
+  "version": "1.0.0",
+  "description": "Input element with cork styling",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.0.2",
+    "@ucd-lib/cork-style": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cork-elements/cork-input.git"
+  },
+  "author": "jrmerz@ucdavis.edu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cork-elements/cork-input/issues"
+  },
+  "homepage": "https://github.com/cork-elements/cork-input#readme"
+}

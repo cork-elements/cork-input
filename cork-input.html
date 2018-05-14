@@ -1,94 +1,32 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../cork-style/cork-style.html">
+<style include="input-font-styles"></style>
+<style>
+  :host {
+    display: block;
+  }
 
-<dom-module id="cork-input">
-  <template>
-    <style include="input-font-styles"></style>
-    <style>
-      :host {
-        display: block;
-      }
+  input {
+    width : calc(100% - (var(--cork-border-width, 2px)*2) - (var(--cork-padding, 6px)*2)) ;
+    font-size: var( --cork-font-size, 16px);
+    padding: var( --cork-padding, 6px);
+    display: block;
+    border-width: var(--cork-border-width, 1px);
+    border-color: var(--cork-border-color, var(--background-color-medium, #AFA6A1));
+    border-style: solid;
+  }
 
-      input {
-        width : calc(100% - (var(--cork-border-width, 2px)*2) - (var(--cork-padding, 6px)*2)) ;
-        font-size: var( --cork-font-size, 16px);
-        padding: var( --cork-padding, 6px);
-        display: block;
-        border-width: var(--cork-border-width, 1px);
-        border-color: var(--cork-border-color, var(--background-color-medium, #AFA6A1));
-        border-style: solid;
-      }
+  input:invalid {
+    box-shadow: none;
+  }
 
-      input:invalid {
-        box-shadow: none;
-      }
+  input:-moz-ui-invalid {
+    box-shadow: none;
+  }
+</style>
 
-      input:-moz-ui-invalid {
-        box-shadow: none;
-      }
-    </style>
-    
-    <input 
-      id="input" 
-      type="[[type]]" 
-      placeholder="[[placeholder]]" 
-      autocomplete="off"
-      on-keyup="_onKeyUp" 
-      on-change="_customChangeEvent" />
-  </template>
-
-  <script>
-
-    class CorkInput extends Polymer.Element {
-      static get is() { return 'cork-input'; }
-
-      static get properties() {
-        return {
-          value: {
-            type : String,
-            value : '',
-            notify : true,
-            observer : '_onValueChange'
-          },
-          type: {
-            type: String,
-            value: 'text'
-          },
-          placeholder: {
-            type: String,
-            value : ''
-          }
-        };
-      }
-
-      _customChangeEvent() {
-        this.value = this.$.input.value;
-        
-        var payload = {
-          bubbles: true, 
-          composed: true,
-          details : {
-            value : this.$.input.value
-          }
-        }
-
-        this.dispatchEvent(new CustomEvent('change', payload));
-      }
-
-      _onKeyUp() {
-        if( this.$ && this.$.input && this.$.input.value !== this.value ) {
-          this.value = this.$.input.value;
-        }
-      }
-
-      _onValueChange() {
-        if( this.$ && this.$.input && this.$.input.value !== this.value ) {
-          this.$.input.value = this.value;
-        }
-      }
-    }
-
-    window.customElements.define(CorkInput.is, CorkInput);
-  </script>
-</dom-module>
-
+<input 
+  id="input" 
+  type="[[type]]" 
+  placeholder="[[placeholder]]" 
+  autocomplete="off"
+  on-keyup="_onKeyUp" 
+  on-change="_customChangeEvent" />
